@@ -7,15 +7,22 @@ from flask import Flask
 from models import storage
 from api.v1.views import app_views
 from flask import Blueprint
+from os import getenv
+
 app = Flask(__name__)
 
-app_views = Blueprint('app_views', app)
 
-def create_app():
-    with app.app_context():
-        storage.close()
+HOST = getenv('HBNB_API_HOST', '0.0.0.0')
+PORT = getenv('HBNB_API_PORT', '5000')
 
-    return app
+#app_views = Blueprint('app_views', __name__, app)
+app.register_blueprint(app_views)
+
+@app.teardown_appcontext
+def close_storage(self):
+    """Calls storage.close"""
+    storage.close()
+
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port='5000', threaded=True)
+    app.run(host=HOST, port=PORT, threaded=True)
