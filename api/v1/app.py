@@ -15,8 +15,9 @@ app = Flask(__name__)
 HOST = getenv('HBNB_API_HOST', '0.0.0.0')
 PORT = getenv('HBNB_API_PORT', '5000')
 
-#app_views = Blueprint('app_views', __name__, app)
+# app_views = Blueprint('app_views', __name__, app)
 app.register_blueprint(app_views)
+
 
 @app.teardown_appcontext
 def close_storage(self):
