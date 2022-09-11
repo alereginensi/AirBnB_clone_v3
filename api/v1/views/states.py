@@ -6,9 +6,6 @@ from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
 from flasgger.utils import swag_from
 
-#HOST = getenv('HBNB_API_HOST', '0.0.0.0')
-#PORT = getenv('HBNB_API_PORT', '5000')
-
 
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/state/get_state.yml', methods=['GET'])
