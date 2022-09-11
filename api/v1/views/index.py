@@ -23,7 +23,7 @@ def index():
 @app_views.route('/stats', strict_slashes=False)
 def count():
     """Calls count method"""
-    return jsonify(storage.count(classes))
+    return jsonify(storage.count(list(classes.keys())))
 
 # if __name__ == '__main__':
 #    app.run(host='0.0.0.0', port='5000')
