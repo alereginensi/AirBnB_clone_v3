@@ -29,7 +29,7 @@ def close_storage(self):
 @app.errorhandler(404)
 def error_not_found(error):
     """Custom 404"""
-    return jsonify({"error": "Not found"})
+    return jsonify({"error": "Not found"}), 404
 
 if __name__ == "__main__":
     app.run(host=HOST, port=PORT, threaded=True)
