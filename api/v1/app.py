@@ -9,9 +9,10 @@ from api.v1.views import app_views
 from flask import Blueprint
 from os import getenv
 from flask import jsonify, abort
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 
 HOST = getenv('HBNB_API_HOST', '0.0.0.0')
 PORT = getenv('HBNB_API_PORT', '5000')
@@ -19,6 +20,10 @@ PORT = getenv('HBNB_API_PORT', '5000')
 # app_views = Blueprint('app_views', __name__, app)
 app.register_blueprint(app_views)
 
+@app.route("/*", methods=["POST"])
+def post_example():
+    """POST in server"""
+    return jsonify(message="POST request returned")
 
 @app.teardown_appcontext
 def close_storage(self):
