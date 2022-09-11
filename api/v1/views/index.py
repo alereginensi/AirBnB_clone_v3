@@ -2,7 +2,6 @@
 '''
 index
 '''
-from models.engine.file_storage import classes
 from models.amenity import Amenity
 from models.city import City
 from models.place import Place
@@ -23,10 +22,13 @@ def index():
 @app_views.route('/stats', strict_slashes=False)
 def count():
     """Calls count method"""
-    for key in classes:
-        classes[key] = storage.count(classes[key])
-    classes.pop('BaseModel')
-            
-    return jsonify(classes)
+    classes_low = {"amenities": Amenity, "cities": City,
+                   "places": Place, "reviews": Review,
+                   "states": State, "users": User}
+
+    for key in classes_low:
+        classes_low[key] = storage.count(classes_low[key])
+
+    return jsonify(classes_low)
 # if __name__ == '__main__':
 #    app.run(host='0.0.0.0', port='5000')
