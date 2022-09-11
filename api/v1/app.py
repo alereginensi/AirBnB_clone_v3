@@ -25,7 +25,7 @@ def close_storage(self):
     """Calls storage.close"""
     storage.close()
 
-@app.teardown_appcontext
+@app.Error_Handler
 def error_not_found(self):
     """Custom 404"""
     return jsonify({"error": "Not found"})
