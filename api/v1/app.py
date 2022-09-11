@@ -17,13 +17,15 @@ CORS(app)
 HOST = getenv('HBNB_API_HOST', '0.0.0.0')
 PORT = getenv('HBNB_API_PORT', '5000')
 
-# app_views = Blueprint('app_views', __name__, app)
+
 app.register_blueprint(app_views)
+
 
 @app.route("/*", methods=["POST"])
 def post_example():
     """POST in server"""
     return jsonify(message="POST request returned")
+
 
 @app.teardown_appcontext
 def close_storage(self):
@@ -35,6 +37,7 @@ def close_storage(self):
 def error_not_found(error):
     """Custom 404"""
     return jsonify({"error": "Not found"}), 404
+
 
 if __name__ == "__main__":
     app.run(host=HOST, port=PORT, threaded=True)
