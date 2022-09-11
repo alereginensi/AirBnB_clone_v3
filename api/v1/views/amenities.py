@@ -92,3 +92,6 @@ def put_amenity(amenity_id):
             setattr(amenity, key, value)
     storage.save()
     return make_response(jsonify(amenity.to_dict()), 200)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port='5000')

@@ -113,3 +113,6 @@ def put_review(review_id):
             setattr(review, key, value)
     storage.save()
     return make_response(jsonify(review.to_dict()), 200)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port='5000')

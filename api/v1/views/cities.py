@@ -97,3 +97,6 @@ def put_city(city_id):
             setattr(city, key, value)
     storage.save()
     return make_response(jsonify(city.to_dict()), 200)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port='5000')
