@@ -8,7 +8,7 @@ from models import storage
 from api.v1.views import app_views
 from flask import Blueprint
 from os import getenv
-from flask import jsonify
+from flask import jsonify, abort
 
 app = Flask(__name__)
 
@@ -25,8 +25,8 @@ def close_storage(self):
     """Calls storage.close"""
     storage.close()
 
-@app.Error_Handler
-def error_not_found(self):
+@app.errorhandler(404)
+def error_not_found(error):
     """Custom 404"""
     return jsonify({"error": "Not found"})
 
