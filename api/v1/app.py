@@ -25,6 +25,7 @@ def close_storage(self):
     """Calls storage.close"""
     storage.close()
 
+
 @app.errorhandler(404)
 def error_not_found(error):
     """Custom 404"""
