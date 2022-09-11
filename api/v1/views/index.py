@@ -25,6 +25,8 @@ def count():
     """Calls count method"""
     for key in classes:
         classes[key] = storage.count(classes[key])
+    classes.pop('BaseModel')
+            
     return jsonify(classes)
 # if __name__ == '__main__':
 #    app.run(host='0.0.0.0', port='5000')
