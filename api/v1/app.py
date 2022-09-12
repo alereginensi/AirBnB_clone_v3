@@ -21,7 +21,7 @@ PORT = getenv('HBNB_API_PORT', '5000')
 app.register_blueprint(app_views)
 
 
-@app.route("/*", methods=["POST"])
+@app.route("/*")
 def post_example():
     """POST in server"""
     return jsonify(message="POST request returned")
