@@ -12,7 +12,7 @@ from flask import jsonify, abort
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "0.0.0.0"}})
 
 HOST = getenv('HBNB_API_HOST', '0.0.0.0')
 PORT = getenv('HBNB_API_PORT', '5000')
